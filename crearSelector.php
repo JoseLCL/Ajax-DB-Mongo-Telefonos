@@ -5,7 +5,7 @@ try{
 
     $filter=[];
     $query = new \MongoDB\Driver\Query($filter);
-    $cursor = $conexion->executeQuery('MiBD_PHP.MiColeccion', $query);                  
+    $cursor = $conexion->executeQuery('BD_Moviles.Celular', $query);                  
    
     /*************  Genera la tabla respuesta ************************/
     echo "<form id='form'>
@@ -13,7 +13,7 @@ try{
             echo "<option disabled selected> Selecciona una opcion </option>";
             // Obtiene cada dato del select
             foreach ($cursor as $doc) {
-                echo "<option value='" . $doc->id . "'>".$doc->nombre."</option>";
+                echo "<option value='" . $doc->id . "'>".$doc->modelo."</option>";
             }  
 
         echo "</select>";

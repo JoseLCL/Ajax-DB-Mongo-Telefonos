@@ -24,6 +24,7 @@
 
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/9881589802.js" crossorigin="anonymous"></script>
+
 </head>
 
 <!-- ************************* PAGINA ***************************************** -->
@@ -37,10 +38,13 @@
 
         <div class="selector">
             <form class="grid">
-                <div class="borrartodo"> <p style="font-size: 20px;"> Haz clic para borrar todos los documentos de la coleccion "Celular" </p> <input type="submit" value="Borrar Todo" onclick="return borrarUsuario()">
+                <div class="borrartodo">
+                    <p style="font-size: 20px;"> Haz clic para borrar todos los documentos de la coleccion "Celular"
+                    </p> <input type="submit" value="Borrar Todo" onclick="return borrarUsuario()">
                 </div>
-                <div class="borrarespecifico"> 
-                    <p style="font-size: 20px;"> Haz clic para seleccionar el modelo del dispositivo y borrarla de la colecci&oacute;n </p>
+                <div class="borrarespecifico">
+                    <p style="font-size: 20px;"> Haz clic para seleccionar el modelo del dispositivo y borrarla de la
+                        colecci&oacute;n </p>
                     <div class="seleccion">
                         <span id="lugarSelector">[ Lugar donde se coloca el Selector en la pagina ]</span>
                         <input type="submit" value="Borra Seleccinado" onclick="return borrarUsuario2()">
@@ -53,18 +57,32 @@
 
         <div class="selector">
             <div class="grid">
-                <form id="mi_formulario">
+                <form id="mi_formulario" enctype="multipart/form-data">
                     <p class="tituloForm"> Agregar nuevo dispositivo a la colecci&oacute;n </p>
                     <div class="wrapForm">
-                        <div class="grid-dato"> <i class="fa-regular fa-address-card"></i> <span> ID: </span> <input type="number" name="id" id="mi_id"> </div>
-                        <div class="grid-dato"> <i class="fa-solid fa-user"></i> <span> Nombre: </span> <input type="text" name="nom"> </div>
-                        <div class="grid-dato"> <span> Apellido: </span> <input type="text" name="ap"> </div>
-                        <div class="grid-dato"> <i class="fa-solid fa-hourglass-half"></i> <span> Edad: </span> <input type="number" name="ed"> </div>
-                        <div class="grid-dato"> <span> Nacimiento: </span> <input type="text" name="nac"> </div>
-                        <div class="grid-dato"> <i class="fa-solid fa-briefcase"></i> <span> Trabajo: </span> <input type="text" name="trab"> </div>
+                        <div class="grid-dato" style="grid-column: span 2;"> <span> ID: </span> <input type="number"
+                                name="id" id="mi_id" required> </div>
+                        <div class="grid-dato"> <span> Marca: </span> <input type="text" name="marca" required> </div>
+                        <div class="grid-dato"> <span> Modelo: </span> <input type="text" name="modelo" required> </div>
+                        <div class="grid-dato"> <span> S.O: </span> <input type="text" name="so" required> </div>
+                        <div class="grid-dato"> <span> Almacenamiento: </span> <input type="text" name="alm" required>
+                        </div>
+                        <div class="grid-dato"> <span> Memoria RAM: </span> <input type="text" name="ram" required>
+                        </div>
+                        <div class="grid-dato"> <span> Color: </span> <input type="text" name="color" required> </div>
+                        <div class="grid-dato">
+                            <span> Imagen: </span>
+                            <input type="file" name="imagen" id="imagen" accept="image/*">
+                        </div>
+                        <div class="grid-dato"
+                            style="width: 150px; height: 150px; border: 1px solid black; margin: 0 auto;">
+                            <img src="" id="img" alt="Vista Previa" style="width: 100%; height: 100%;">
+                        </div>
                         <!--El boton es submit para que se haga la validacion de los campos del lado del cliente-->
-                        <div class="grid-dato"> <i class="fa-solid fa-square-up-right"></i> <input type="submit" name="boton" value="Insertar" onclick="return insertarUsuario()"> </div>
-                        <div class="grid-dato">  <i class="fa-solid fa-database"></i> <input type="button" name="botonConsulta" value="Consulta" onclick="location.href='consulta.html'"> </div>
+                        <div class="grid-dato"> <i class="fa-solid fa-square-up-right"></i> <input type="submit"
+                                name="boton" value="Insertar" onclick="return insertarUsuario()"> </div>
+                        <div class="grid-dato"> <i class="fa-solid fa-database"></i> <input type="button"
+                                name="botonConsulta" value="Consulta" onclick="location.href='consulta.html'"> </div>
                     </div>
                 </form>
 
@@ -72,10 +90,67 @@
                 <div class="coleccion">
                     <p class="tituloColec"> Coleccion "Celular" </p>
                     <div id="txtHint"><b>[ La informacion de la persona se mostrara aqui ]</b></div>
-                 </div>
+                </div>
             </div>
         </div>
+
+        <div id="datosCelular">
+            <!-- Los datos de la colección se mostrarán aquí -->
+        </div>
     </div>
+
+    <!-- Subir imagenes -->
+    <script type="text/javascript">
+        imagen.onchange = evt => {
+            const [file] = imagen.files;
+            if (file) {
+                img.src = URL.createObjectURL(file);
+            }
+        }
+
+        $(document).ready(function () {
+            // Realiza una solicitud AJAX para cargar los datos
+            $.ajax({
+                url: 'mostrar_datos.php',
+                type: 'GET',
+                success: function (response) {
+                    // Inserta la respuesta en el lugar especificado
+                    $('#datosCelular').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                },
+            });
+        });
+
+        // function submitData(){
+        //     $(document).ready(function(){
+        //         var formData = new FormData();
+        //         var files = $('#imagen')[0].files;
+        //         formData.append('imagen', files[0]);
+
+        //         $.ajax({
+        //             url: 'insertar_usuario.php',
+        //             type: 'post',
+        //             data: formData,
+        //             contentType: false,
+        //             processData: false,
+        //             success: function (response){
+        //             if (response == "Success"){
+        //                 alert("Registro añadido");
+        //             }
+        //             else if(response == "Invalid"){
+        //                 alert("Extendion de imagen invalida");
+        //             }
+        //             else{
+        //             }
+        //                 alert("Llena el formulario");
+        //             }
+        //         });
+        //     });
+        // }
+    </script>
+
 </body>
 
 </html>

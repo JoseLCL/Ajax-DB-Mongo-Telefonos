@@ -43,29 +43,31 @@ try{
 
     $filter=[];
     $query = new \MongoDB\Driver\Query($filter);
-    $cursor = $conexion->executeQuery('MiBD_PHP.MiColeccion', $query);
+    $cursor = $conexion->executeQuery('BD_Moviles.Celular', $query);
                   
 
     /*************  Genera la tabla respuesta ************************/
     echo "<table>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>   
-            <th>Edad</th>
-            <th>Lugar de Nacimiento</th>
-            <th>Trabajo</th>
+            <th>Marca</th>
+            <th>Modelo</th>   
+            <th>S.O.</th>
+            <th>Almacenamiento</th>
+            <th>Memoria RAM</th>
+            <th>Color</th>
         </tr>";
 
         // Obtiene cada fila (arreglo) de resultados
         foreach ($cursor as $doc) {
             echo "<tr>";
                 echo "<td>" . $doc->id . "</td>";
-                echo "<td>" . $doc->nombre . "</td>";
-                echo "<td>" . $doc->apellido . "</td>";
-                echo "<td>" . $doc->edad . "</td>";
-                echo "<td>" . $doc->nacimiento . "</td>";
-                echo "<td>" . $doc->trabajo . "</td>";
+                echo "<td>" . $doc->marca . "</td>";
+                echo "<td>" . $doc->modelo . "</td>";
+                echo "<td>" . $doc->so . "</td>";
+                echo "<td>" . $doc->alm . "</td>";
+                echo "<td>" . $doc->ram . "</td>";
+                echo "<td>" . $doc->color . "</td>";
             echo "</tr>";
         }
     echo "</table>";

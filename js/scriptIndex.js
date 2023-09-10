@@ -101,10 +101,12 @@
 
                 //return false; //Si se quiere anular el submit
 
-            }       
-            else{
-                alert("Datos incorrectooos");
-            }
+            } 
+
+            // else{
+            //     alert("Datos incorrectooos");
+            // }
+            
         }      
 
         /************************************************************************

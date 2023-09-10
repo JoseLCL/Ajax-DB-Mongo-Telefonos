@@ -19,7 +19,7 @@ try{
     $filter = [];
     $bulk->delete($filter);
 
-    $result = $conexion->executeBulkWrite('MiBD_PHP.MiColeccion', $bulk);
+    $result = $conexion->executeBulkWrite('BD_Moviles.Celular', $bulk);
 }catch (Throwable $e) {
     echo "Error de conexión: " . $e->getMessage().PHP_EOL;
 }
