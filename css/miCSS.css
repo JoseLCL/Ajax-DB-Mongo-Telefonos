@@ -1,0 +1,190 @@
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-size: 2em;
+}
+
+body{
+  background-image: url(https://media.istockphoto.com/id/1037437274/es/vector/gradiente-de-patr%C3%B3n-de-semitonos-antecedentes-vector-punto.jpg?s=612x612&w=0&k=20&c=A40dRoLeRjRrp_V5BVF6iEn_Yf7QcYu0ALOEBSyQq_0=);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content{
+    margin: auto;
+    padding: 1em;
+}
+
+/* .selector{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+} */
+
+.selector input[type="submit"],
+.selector input[type="button"]{
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.5em;
+    font-size: 18px;
+    border: 1px solid #000;
+    text-transform: uppercase;
+ }
+ 
+ .selector input[type="submit"]:hover,
+ .selector input[type="submit"]:focus,
+ .selector input[type="button"]:hover,
+ .selector input[type="button"]:focus {
+     background: #dad1d1;
+     font-weight: bold;
+     transition: background-color 1s ease-out;
+ }
+
+ select{
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 50px;
+    padding: 3px;
+}
+
+select option{
+    text-align: center;
+}
+
+select:hover,
+select:focus{
+    background: #dad1d1;
+    font-weight: bold;
+}
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+  }
+  
+  .borrartodo {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .grid p {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .borrarespecifico {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+  }
+
+  #mi_formulario{
+    grid-column: 1;
+    
+  }
+
+  .grid-dato{
+    grid-column: span 1;
+    text-align: center;
+  }
+
+  .grid-dato input[type="text"],
+  .grid-dato input[type="number"]{
+    width: 50%;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    font-size: 17px;
+    color: black;
+  }
+
+  .grid-dato span{
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .grid-dato input[type="submit"],
+  .grid-dato input[type="button"]{
+    width: 50%;
+    background-color: white;
+    border: 1px solid #000;
+  }
+
+  .tituloForm{
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .wrapForm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; 
+    background: rgb(244, 239, 239);
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .coleccion{
+    grid-column: 2;
+  }
+
+  .tituloColec{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  #txtHint{
+    background: rgb(244, 239, 239);
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    width: 85%;
+    margin: 0 auto;
+}
+
+/* #lugarSelector{
+  display: flex;
+  align-content: center;
+  justify-content: center; 
+  margin-top: 20px; 
+  margin-bottom: 40px;
+} */
+
+#resultado{
+  background: rgb(244, 239, 239);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  padding: 0.7em;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#resultado th{
+  text-align: center;
+}
+
+
+
+
+

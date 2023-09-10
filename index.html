@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tel&eacute;fonos Celulares</title>
+
+    <!-- Incluye libreria para jquery-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+
+    <!-- Incluye Mi libreria -->
+    <script type="text/javascript" src="js/scriptIndex.js"></script>
+
+    <!-- Incluye el CSS -->
+    <link rel="stylesheet" href="./css/miCss.css">
+
+    <!--GOOGLE FONTS (QUICKSAND) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/9881589802.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- ************************* PAGINA ***************************************** -->
+<!-- Funciones llamadas despues de cargar la pagina -->
+
+<body onload='mostrarUsuario(); crearSelector();'>
+
+    <div class="content">
+
+        <h1>Cat&aacute;logo de Tel&eacute;fonos Celulares</h1>
+
+        <div class="selector">
+            <form class="grid">
+                <div class="borrartodo"> <p style="font-size: 20px;"> Haz clic para borrar todos los documentos de la coleccion "Celular" </p> <input type="submit" value="Borrar Todo" onclick="return borrarUsuario()">
+                </div>
+                <div class="borrarespecifico"> 
+                    <p style="font-size: 20px;"> Haz clic para seleccionar el modelo del dispositivo y borrarla de la colecci&oacute;n </p>
+                    <div class="seleccion">
+                        <span id="lugarSelector">[ Lugar donde se coloca el Selector en la pagina ]</span>
+                        <input type="submit" value="Borra Seleccinado" onclick="return borrarUsuario2()">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <br>
+
+        <div class="selector">
+            <div class="grid">
+                <form id="mi_formulario">
+                    <p class="tituloForm"> Agregar nuevo dispositivo a la colecci&oacute;n </p>
+                    <div class="wrapForm">
+                        <div class="grid-dato"> <i class="fa-regular fa-address-card"></i> <span> ID: </span> <input type="number" name="id" id="mi_id"> </div>
+                        <div class="grid-dato"> <i class="fa-solid fa-user"></i> <span> Nombre: </span> <input type="text" name="nom"> </div>
+                        <div class="grid-dato"> <span> Apellido: </span> <input type="text" name="ap"> </div>
+                        <div class="grid-dato"> <i class="fa-solid fa-hourglass-half"></i> <span> Edad: </span> <input type="number" name="ed"> </div>
+                        <div class="grid-dato"> <span> Nacimiento: </span> <input type="text" name="nac"> </div>
+                        <div class="grid-dato"> <i class="fa-solid fa-briefcase"></i> <span> Trabajo: </span> <input type="text" name="trab"> </div>
+                        <!--El boton es submit para que se haga la validacion de los campos del lado del cliente-->
+                        <div class="grid-dato"> <i class="fa-solid fa-square-up-right"></i> <input type="submit" name="boton" value="Insertar" onclick="return insertarUsuario()"> </div>
+                        <div class="grid-dato">  <i class="fa-solid fa-database"></i> <input type="button" name="botonConsulta" value="Consulta" onclick="location.href='consulta.html'"> </div>
+                    </div>
+                </form>
+
+                <!-- Lugar en la pagina Web dinde se olocara la tabla con los datos de la BD  -->
+                <div class="coleccion">
+                    <p class="tituloColec"> Coleccion "Celular" </p>
+                    <div id="txtHint"><b>[ La informacion de la persona se mostrara aqui ]</b></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
