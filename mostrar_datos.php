@@ -9,7 +9,6 @@ try {
 
     // Genera el código HTML para mostrar los datos y las imágenes
     foreach ($result as $documento) {
-        $id = $documento->id;
         $marca = $documento->marca;
         $modelo = $documento->modelo;
         $so = $documento->so;
@@ -20,15 +19,17 @@ try {
         $imagen_base64 = base64_encode($imagen_binario);
 
         // Genera el HTML para mostrar el documento y la imagen
-        echo "<div class='celular'>";
-        echo "<p>ID: $id</p>";
-        echo "<p>Marca: $marca</p>";
-        echo "<p>Modelo: $modelo</p>";
-        echo "<p>Sistema Operativo: $so</p>";
-        echo "<p>Almacenamiento: $alm</p>";
-        echo "<p>Memoria RAM: $ram</p>";
-        echo "<p>Color: $color</p>";
-        echo "<img src='data:image/jpeg;base64,$imagen_base64' alt='Imagen del dispositivo'>";
+        echo "<div class='resultadoCelular'>";
+        echo "<h2> <b>Informaci&oacuten del equipo</b> </h2>";
+        echo "<div class='columnaDatos'>";
+        echo "<p><b>Marca:</b> $marca</p>";
+        echo "<p><b>Modelo:</b> $modelo</p>";
+        echo "<p><b>Sistema Operativo:</b> $so</p>";
+        echo "<p><b>Almacenamiento:</b> $alm</p>";
+        echo "<p><b>Memoria RAM:</b> $ram</p>";
+        echo "<p><b>Color:</b> $color</p>";
+        echo "</div>";
+        echo "<img src='data:image/jpeg;base64,$imagen_base64'>";
         echo "</div>";
     }
 } catch (Throwable $e) {
