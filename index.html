@@ -83,6 +83,10 @@
                                 name="boton" value="Insertar" onclick="return insertarUsuario()"> </div>
                         <div class="grid-dato"> <i class="fa-solid fa-database"></i> <input type="button"
                                 name="botonConsulta" value="Consulta" onclick="location.href='consulta.html'"> </div>
+                        <div class="grid-dato" hidden> <i class="fa-solid fa-file-pen"></i> <input type="submit"
+                                name="boton" value="Modificar Datos" onclick=""> </div>
+                        <div class="grid-dato" hidden> <i class="fa-solid fa-ban"></i> <input type="button"
+                                name="botonConsulta" value="Cancelar" onclick=""> </div>
                     </div>
                 </form>
 
@@ -121,34 +125,7 @@
                     console.error(error);
                 },
             });
-        });
-
-        // function submitData(){
-        //     $(document).ready(function(){
-        //         var formData = new FormData();
-        //         var files = $('#imagen')[0].files;
-        //         formData.append('imagen', files[0]);
-
-        //         $.ajax({
-        //             url: 'insertar_usuario.php',
-        //             type: 'post',
-        //             data: formData,
-        //             contentType: false,
-        //             processData: false,
-        //             success: function (response){
-        //             if (response == "Success"){
-        //                 alert("Registro añadido");
-        //             }
-        //             else if(response == "Invalid"){
-        //                 alert("Extendion de imagen invalida");
-        //             }
-        //             else{
-        //             }
-        //                 alert("Llena el formulario");
-        //             }
-        //         });
-        //     });
-        // }
+        });  
     </script>
 
 </body>

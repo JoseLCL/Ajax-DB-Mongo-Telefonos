@@ -4,7 +4,11 @@ try{
     $conexion = new MongoDB\Driver\Manager('mongodb://localhost:27017');             
 
     $filter=[];
-    $query = new \MongoDB\Driver\Query($filter);
+    $options = [
+        'sort' => ['id' => 1], // Ordenar por id en orden ascendente (1)
+    ];
+
+    $query = new \MongoDB\Driver\Query($filter, $options);
     $cursor = $conexion->executeQuery('BD_Moviles.Celular', $query);                  
    
     /*************  Genera la tabla respuesta ************************/

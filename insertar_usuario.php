@@ -30,27 +30,36 @@
         $imagen_binario = file_get_contents('default.png');
     }
 
-    /*Abre la conexion con el servidor de la BD*/            
-try{
+/* Abre la conexion con el servidor de la BD */
+try {
     $conexion = new MongoDB\Driver\Manager('mongodb://localhost:27017');
-    //Prepara el comando
-    $documento = [
-        'id'=> $id,
-        'marca' => $marca,
-        'modelo'=> $modelo,
-        'so' => $sistema,
-        'alm' => $almacenamiento,
-        'ram'=> $ram,
-        'color'=> $color,
-        'imagen' => new MongoDB\BSON\Binary($imagen_binario, MongoDB\BSON\Binary::TYPE_GENERIC),
-    ];
-    $bulk = new MongoDB\Driver\BulkWrite;
-    $bulk->insert($documento);
 
-    // Realiza la consulta
-    $conexion->executeBulkWrite('BD_Moviles.Celular', $bulk); //Si no existen los crea
-}catch (Throwable $e) {
-    echo "Error de conexión: " . $e->getMessage().PHP_EOL;
+    // Verificar si el ID ya existe en la base de datos
+    $filter = ['id' => $id];
+    $query = new \MongoDB\Driver\Query($filter);
+    $existing_document = $conexion->executeQuery('BD_Moviles.Celular', $query)->toArray();
+
+    // Si el ID no existe, insertar el nuevo documento
+    if (empty($existing_document)) {
+        $documento = [
+            'id' => $id,
+            'marca' => $marca,
+            'modelo' => $modelo,
+            'so' => $sistema,
+            'alm' => $almacenamiento,
+            'ram' => $ram,
+            'color' => $color,
+            'imagen' => new MongoDB\BSON\Binary($imagen_binario, MongoDB\BSON\Binary::TYPE_GENERIC),
+        ];
+        $bulk = new MongoDB\Driver\BulkWrite;
+        $bulk->insert($documento);
+
+        // Realiza la consulta para insertar el nuevo documento
+        $conexion->executeBulkWrite('BD_Moviles.Celular', $bulk);
+    } 
+    
+} catch (Throwable $e) {
+    echo "Error de conexión: " . $e->getMessage() . PHP_EOL;
 }
 ?>
 

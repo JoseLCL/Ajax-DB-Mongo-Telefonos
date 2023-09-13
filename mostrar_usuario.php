@@ -42,7 +42,11 @@ try{
     $conexion = new MongoDB\Driver\Manager('mongodb://localhost:27017');             
 
     $filter=[];
-    $query = new \MongoDB\Driver\Query($filter);
+    $options = [
+        'sort' => ['id' => 1], // Ordenar por id en orden ascendente (1)
+    ];
+
+    $query = new \MongoDB\Driver\Query($filter, $options);
     $cursor = $conexion->executeQuery('BD_Moviles.Celular', $query);
                   
 
@@ -56,6 +60,7 @@ try{
             <th>Almacenamiento</th>
             <th>Memoria RAM</th>
             <th>Color</th>
+            <th>Editar</th>
         </tr>";
 
         // Obtiene cada fila (arreglo) de resultados
@@ -68,8 +73,10 @@ try{
                 echo "<td>" . $doc->alm . "</td>";
                 echo "<td>" . $doc->ram . "</td>";
                 echo "<td>" . $doc->color . "</td>";
+                echo "<td> <i class='fa-solid fa-pen'></i> </td>";
             echo "</tr>";
         }
+        
     echo "</table>";
 
 }catch (Throwable $e) {
