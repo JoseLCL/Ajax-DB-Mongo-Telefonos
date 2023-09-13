@@ -188,7 +188,7 @@ select:focus{
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Distribuir los divs horizontalmente */
+  justify-content: space-around; /* Distribuir los divs horizontalmente */
   gap: 20px; /* Espacio entre los divs */
 }
 
@@ -217,4 +217,22 @@ select:focus{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
+}
+
+.back{
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0.5em;
+  font-size: 18px;
+  border: 1px solid #000;
+  text-transform: uppercase;
+}
+
+.back:hover,
+.back:focus{
+  background: #dad1d1;
+  font-weight: bold;
+  transition: background-color 1s ease-out;
 }
