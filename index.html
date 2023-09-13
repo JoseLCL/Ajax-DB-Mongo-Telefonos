@@ -61,7 +61,7 @@
                     <p class="tituloForm"> Agregar nuevo dispositivo a la colecci&oacute;n </p>
                     <div class="wrapForm">
                         <div class="grid-dato" style="grid-column: span 2;"> <span> ID: </span> <input type="number"
-                                name="id" id="mi_id" required> </div>
+                                name="id" id="mi_id" min="1" required> </div>
                         <div class="grid-dato"> <span> Marca: </span> <input type="text" name="marca" required> </div>
                         <div class="grid-dato"> <span> Modelo: </span> <input type="text" name="modelo" required> </div>
                         <div class="grid-dato"> <span> S.O: </span> <input type="text" name="so" required> </div>
@@ -70,13 +70,13 @@
                         <div class="grid-dato"> <span> Memoria RAM: </span> <input type="text" name="ram" required>
                         </div>
                         <div class="grid-dato"> <span> Color: </span> <input type="text" name="color" required> </div>
-                        <div class="grid-dato">
+                        <div class="grid-dato" style="margin: auto">
                             <span> Imagen: </span>
                             <input type="file" name="imagen" id="imagen" accept="image/*">
                         </div>
                         <div class="grid-dato"
                             style="width: 150px; height: 150px; border: 1px solid black; margin: 0 auto;">
-                            <img src="" id="img" alt="Vista Previa" style="width: 100%; height: 100%;">
+                            <img src="" id="img" style="width: 100%; height: 100%;">
                         </div>
                         <!--El boton es submit para que se haga la validacion de los campos del lado del cliente-->
                         <div class="grid-dato"> <i class="fa-solid fa-square-up-right"></i> <input type="submit"
@@ -97,10 +97,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="datosCelular">
-            <!-- Los datos de la colección se mostrarán aquí -->
-        </div>
     </div>
 
     <!-- Subir imagenes -->
@@ -111,21 +107,6 @@
                 img.src = URL.createObjectURL(file);
             }
         }
-
-        $(document).ready(function () {
-            // Realiza una solicitud AJAX para cargar los datos
-            $.ajax({
-                url: 'mostrar_datos.php',
-                type: 'GET',
-                success: function (response) {
-                    // Inserta la respuesta en el lugar especificado
-                    $('#datosCelular').html(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                },
-            });
-        });  
     </script>
 
 </body>

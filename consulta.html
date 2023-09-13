@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title> Cat&aacute;logo de Tel&eacute;fonos Celulares </title>
 
-    <!-- Incluye libreria para jquery--> 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Incluye libreria para jquery-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
 
-    <!-- Incluye mis script--> 
+    <!-- Incluye mis script-->
     <script type="text/javascript" src="js/scriptConsultas.js"></script>
 
     <!-- Incluye el CSS -->
@@ -21,15 +22,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 
-<!-- ************************* PAGINA ***************************************** --> 
-<body onload="llamarPhp(0); crearSelector();">
-    <h2 style="text-align: center;">Selecciona persona a consultar </h3>
-    <!-- Lugar en la pagina Web donde se pondra el selector que tendra valores de la BD --> 
-    <div id="lugarSelector"> Lugar donde se coloca el  Selector en la pagina </div>
+<!-- ************************* PAGINA ***************************************** -->
 
-    <h2 style="text-align: center;">COLECCION "PERSONAS"</h2>
-    <!-- Lugar en la pagina Web donde se mostrará la tabla resultado de la consulta--> 
-    <div id="resultado">Lugar donde se coloca el Resultado </div>
+<body onload="llamarPhp(0); crearSelector();">
+
+    <h1 style="text-align: center;"> Buscar por Modelo </h1>
+
+    <!-- Lugar en la pagina Web donde se pondra el selector que tendra valores de la BD -->
+    <div id="lugarSelector" style="display: flex; justify-content: center; margin-bottom: 20px;">
+        Lugar donde se coloca el Selector en la pagina
+    </div>
+
+    <div id="busqueda" style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <!-- Se despliega el modelo seleccionado aqui -->
+    </div>
+
+    <!-- Botón para regresar al index -->
+    <div style="display: flex; justify-content: center;">
+        <a href="index.html"><button class="back">Volver a Registro</button></a>
+    </div>
+    <!-- Lugar en la pagina Web donde se mostrará la tabla resultado de la consulta-->
+    <!-- <div id="resultado">Lugar donde se coloca el Resultado </div> -->
+
+    <h1 style="text-align: center; margin-top: 50px;"> Cat&aacute;logo General de Tel&eacute;fonos Celulares </h1>
+
+    <div id="datosCelular">
+        <!-- Los datos de la colección se mostrarán aquí -->
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Realiza una solicitud AJAX para cargar los datos
+            $.ajax({
+                url: 'mostrar_datos.php',
+                type: 'GET',
+                success: function (response) {
+                    // Inserta la respuesta en el lugar especificado
+                    $('#datosCelular').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                },
+            });
+        });
+
+    </script>
+
 </body>
 
 </html>

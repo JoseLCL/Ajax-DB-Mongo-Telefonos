@@ -56,7 +56,7 @@
                //Procesa dato recibido. Obtiene la tabla HTML en el objeto "respuesta"
                success: function (respuesta) {
                    //Coloca el resultado en la pagina WEB
-                   $("#resultado").html(respuesta);
+                   $("#busqueda").html(respuesta);
                },
                
                //Procesa mensaje de error
