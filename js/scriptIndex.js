@@ -141,6 +141,7 @@ function crearSelector() {
 function mifuncion() {
     //No hace nada
 }
+
 function editarUsuario() {
     //Obtiene el formulario de edición
     var editarForm = document.getElementById("editarForm");
