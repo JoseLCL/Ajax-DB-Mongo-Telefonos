@@ -64,8 +64,8 @@ try{
         </tr>";
 
         // Obtiene cada fila (arreglo) de resultados
-        foreach ($cursor as $doc) {
-            echo "<tr>";
+            foreach ($cursor as $doc) {
+                echo "<tr>";
                 echo "<td>" . $doc->id . "</td>";
                 echo "<td>" . $doc->marca . "</td>";
                 echo "<td>" . $doc->modelo . "</td>";
@@ -73,11 +73,13 @@ try{
                 echo "<td>" . $doc->alm . "</td>";
                 echo "<td>" . $doc->ram . "</td>";
                 echo "<td>" . $doc->color . "</td>";
-                echo "<td> <i class='fa-solid fa-pen'></i> </td>";
-            echo "</tr>";
-        }
-        
-    echo "</table>";
+                echo "<td>";
+                // Agrega un enlace a la página de edición con el ID del registro
+                echo "<a href='editar_form.php?id=" . $doc->id . "'>Editar</a>";
+                echo "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
 
 }catch (Throwable $e) {
     echo "Error de conexión: " . $e->getMessage().PHP_EOL;

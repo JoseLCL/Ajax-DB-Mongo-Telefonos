@@ -141,4 +141,41 @@ function crearSelector() {
 function mifuncion() {
     //No hace nada
 }
+function editarUsuario() {
+    //Obtiene el formulario de edición
+    var editarForm = document.getElementById("editarForm");
+
+    // Valida los campos del formulario 
+    if (editarForm.checkValidity()) {
+
+        //Obtiene los datos del formulario
+        var datosForm = new FormData(editarForm);
+
+        // Crea el objeto XMLHttpRequest
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // Codigo para  IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // Codigo para IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        // Abre la conexión y establece la URL del archivo PHP de edición
+        xmlhttp.open("POST", "editar.php", true);
+
+
+        // Envia los datos del formulario de edición
+        xmlhttp.send(datosForm);
+        alert("Datos actualizados")
+
+        //return false; //Si se quiere anular el submit
+    }
+}
+
+
+
+
+
+
 
